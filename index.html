@@ -17,27 +17,29 @@
 
     <script type="text/babel">
         (()=>{
-            const name = "React Practice";  
-            // function countUp(count){
-            //     alert(count);
-            // }
+            class Counter extends React.Component{
+                constructor(props){
+                    super(props);
+                    this.state = {
+                        count: 0
+                    }
+                    this.countUp = this.countUp.bind(this);
+                }
 
-            function countUp(event, count){
-                event.preventDefault();
-                alert(count);
-            }
+                countUp(){
+                    this.setState(prevState => {
+                        return {count: prevState.count + 1};
+                    });
+                }
 
-            function Counter(props){
-                return (
-                    // <li style={{backgroundColor: props.color}} onClick={() => countUp(props.color)}>
-                    //     0
-                    // </li> 
-                    <li style={{backgroundColor: props.color}}>
-                        <a href="#" onClick={(e) => countUp(e,  props.color)}>
-                            0
-                        </a>
-                    </li> 
-                ); 
+                render(){
+                    return (
+                        <li style={{backgroundColor: this.props.color}} 
+                            onClick={this.countUp} >
+                            {this.state.count}
+                        </li>
+                    );
+                }
             }
 
             ReactDOM.render(
