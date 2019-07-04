@@ -28,3 +28,10 @@ body {
     cursor: pointer;
     user-select: none; 
 }
+
+.container div {
+    text-align: right;
+    padding: 5px;
+    font-size: 14px;
+    font-weight: bold;
+}
